@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  django:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./compose/django.dockerfile
+    command: /usr/src/web/app/django-entrypoint.sh
+    volumes:
+      - ./app:/usr/src/web/app
+      - ./static:/usr/src/web/static
+    ports:
+      - 18888:8000
